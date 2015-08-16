@@ -5,3 +5,7 @@
 /Code/client/.project
 /Code/server/.project
 /Code/server/.classpath
+/Code/client/.settings
+/Code/server/.settings
+/Code/.settings
+/Code/.gradle
