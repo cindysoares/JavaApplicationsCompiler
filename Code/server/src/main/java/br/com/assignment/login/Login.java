@@ -10,7 +10,12 @@ public class Login {
 	@GET()
 	@Path("/{username}/{password}")
 	public String login(@PathParam("username") String username, @PathParam("password") String password) {
-		return "Login Sucessfull as " + username;
+		UserBO userBO = new UserBO();
+		User user = userBO.find(username);
+		if(user == null || !user.getPassword().equals(password)) {
+			return "Failed login";
+		}
+		return "Successful login as " + username;
 	}
 	
 }
