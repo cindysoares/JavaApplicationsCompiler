@@ -1,13 +1,26 @@
 package br.com.assignment.compiler;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.junit.Test;
 
 import junit.framework.Assert;
 
 public class CompilerTest {
 	
+	@Test
 	public void testHelloWorld() {
-		String result = new Compiler().compile(new File("HelloWorld.txt"));
+
+		String result = "";
+
+		try {
+			result = new Compiler().compile(new File("../server/src/test/resources/br/com/assignment/compiler/HelloWorld.txt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Assert.assertNotNull(result);
 		// TODO continuar...
