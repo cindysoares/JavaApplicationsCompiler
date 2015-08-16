@@ -23,3 +23,7 @@ dependencies {
 	testCompile 'com.sun.jersey:jersey-servlet:1.19'
 	testCompile 'junit:junit:4.8.2'
 }
+
+test {
+	exclude '**/IT*'
+}
