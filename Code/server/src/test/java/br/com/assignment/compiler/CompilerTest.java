@@ -1,8 +1,6 @@
 package br.com.assignment.compiler;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 import org.junit.Test;
 
