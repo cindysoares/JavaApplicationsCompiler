@@ -9,7 +9,7 @@ import com.sun.jersey.api.client.WebResource;
 
 public class ITLogin {
 	
-	private static final String URL_LOGIN = "http://localhost:8080/server/rest/login/admin/admin";
+	private static final String URL_LOGIN = "http://localhost:8080/Code/rest/login/admin/admin";
 	
 	@Test
 	public void testSuccessfulLogin() {
