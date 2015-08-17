@@ -11,13 +11,10 @@ dependencies {
 	compile 'org.codehaus.plexus:plexus-container-default:1.5.5', 'io.takari.polyglot:polyglot-common:0.1.5'
 	
 	// Dependencies for Restful
-	compile "javax.ws.rs:jsr311-api:1.1"
 	compile "com.sun.jersey:jersey-core:1.19"
 	compile "com.sun.jersey:jersey-server:1.19"
-	compile "com.sun.jersey:jersey-json:1.19"
-	 
-	// Dependency needed for interceptors and filters.
-	compile 'com.sun.jersey.contribs:jersey-contribs:1.19'
+	compile "com.sun.jersey:jersey-bundle:1.19"
+	//compile "asm:asm:3.3.1"
 	
 	testCompile 'com.sun.jersey:jersey-client:1.19'	
 	testCompile 'com.sun.jersey:jersey-servlet:1.19'

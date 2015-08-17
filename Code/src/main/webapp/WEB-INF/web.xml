@@ -4,19 +4,14 @@
  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
  id="WebApp_ID" version="2.5">
  
- <display-name>Java Applications Compiler</display-name>
- <servlet>
-   <servlet-name>JerseyServlet</servlet-name>
-   <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
- 
- <!-- Services package configuration. -->
-   <init-param>
-     <param-name>jersey.config.server.provider.packages</param-name>
-     <param-value>br.com.assignment.login</param-value>
-   </init-param> 
- </servlet>
- <servlet-mapping>
-   <servlet-name>JerseyServlet</servlet-name>
-   <url-pattern>/rest/*</url-pattern>
- </servlet-mapping>
+	<display-name>JavaApplicationsCompiler</display-name>
+	<servlet>
+		<servlet-name>JerseyServlet</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<load-on-startup>1</load-on-startup>
+ 	</servlet>
+	<servlet-mapping>
+	  <servlet-name>JerseyServlet</servlet-name>
+	  <url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -15,7 +15,7 @@ import com.sun.jersey.api.client.WebResource;
 
 public class ITProjectCompiler {
 	
-	private static final String URL_COMPILER = "http://localhost:8080/server/rest/compiler/run";
+	private static final String URL_COMPILER = "http://localhost:8080/Code/rest/compiler/run";
 
 	@Test
 	public void testSendingAZipFile() throws Exception {
