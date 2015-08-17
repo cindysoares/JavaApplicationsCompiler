@@ -25,7 +25,7 @@ public class ITProjectCompiler {
 		Client client = Client.create();
 		WebResource r=client.resource(URL_COMPILER);
 		String response = r.type(MediaType.MULTIPART_FORM_DATA).post(String.class, request);
-		Assert.assertNotNull(response);
+		Assert.assertTrue("\n" + response, response.startsWith("INFO - Opening zip file"));
 	}
 
 }
