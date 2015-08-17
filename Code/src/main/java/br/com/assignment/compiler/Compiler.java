@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
@@ -47,8 +49,9 @@ public class Compiler {
 			log.info("Compiling " + className + " ...");
 			List<JavaFile> lista = Arrays.asList(new JavaFile(className, extractFileText(javaFile)));
 
-			CompilationTask compilationTask = compiler.getTask(null, fileManager, null, null, null, lista);
-			compileResult = compilationTask.call();			
+			Writer outputStreamWriter = new OutputStreamWriter(logOutputStream);
+			CompilationTask compilationTask = compiler.getTask(outputStreamWriter, fileManager, null, null, null, lista);
+			compileResult = compilationTask.call();
 			
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
