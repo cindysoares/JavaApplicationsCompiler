@@ -7,19 +7,17 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-	compile 'org.codehaus.plexus:plexus-container-default:1.6'
-	compile 'io.takari.polyglot:polyglot-common:0.1.11'
-	
+dependencies {	
 	// Dependencies for Restful
 	compile "com.sun.jersey:jersey-core:1.19"
 	compile "com.sun.jersey:jersey-server:1.19"
 	compile "com.sun.jersey:jersey-bundle:1.19"
-	//compile "asm:asm:3.3.1"
+	
+	compile 'log4j:log4j:1.2.17'
 	
 	testCompile 'com.sun.jersey:jersey-client:1.19'	
 	testCompile 'com.sun.jersey:jersey-servlet:1.19'
-	testCompile 'junit:junit:4.8.2'
+	testCompile 'junit:junit:4.12'
 }
 
 test {
