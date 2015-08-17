@@ -14,7 +14,7 @@ public class CompilerTest {
 		String result = "";
 
 		try {
-			result = new Compiler().compile(new File("../server/src/test/resources/br/com/assignment/compiler/HelloWorld.txt"));
+			result = new Compiler().compile(new File("../Code/src/test/resources/br/com/assignment/compiler/HelloWorld.txt"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
