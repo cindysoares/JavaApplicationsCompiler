@@ -5,9 +5,6 @@ apply plugin: 'jetty'
 
 repositories {
     mavenCentral()
-    flatDir {
-       dirs 'libs', 'test-libs'
-   	}
 }
 
 project.war.baseName='JavaApplicationsCompiler'
