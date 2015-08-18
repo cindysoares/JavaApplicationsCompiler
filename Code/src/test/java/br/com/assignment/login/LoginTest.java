@@ -1,8 +1,8 @@
 package br.com.assignment.login;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import junit.framework.Assert;
 
 public class LoginTest {
 	

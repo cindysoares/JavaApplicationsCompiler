@@ -6,8 +6,7 @@ import java.io.InputStream;
 
 import javax.ws.rs.core.MediaType;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.sun.jersey.api.client.Client;

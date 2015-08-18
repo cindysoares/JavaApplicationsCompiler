@@ -1,7 +1,7 @@
 package br.com.assignment.login;
 
-import junit.framework.Assert;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.sun.jersey.api.client.Client;

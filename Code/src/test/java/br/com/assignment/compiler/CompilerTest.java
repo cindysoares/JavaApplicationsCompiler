@@ -2,8 +2,7 @@ package br.com.assignment.compiler;
 
 import java.io.File;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 public class CompilerTest {
