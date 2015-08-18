@@ -5,7 +5,12 @@ apply plugin: 'jetty'
 
 repositories {
     mavenCentral()
+    flatDir {
+       dirs 'libs', 'test-libs'
+   	}
 }
+
+project.war.baseName='JavaApplicationsCompiler'
 
 dependencies {	
 	// Dependencies for Restful
@@ -15,10 +20,11 @@ dependencies {
 	compile "com.sun.jersey.contribs:jersey-multipart:1.19"
 	//compile "com.sun.jersey:jersey-json:1.19"
 	//compile 'com.sun.jersey.contribs:jersey-contribs:1.19'
-	//compile 'org.json:json:20141113'
+	//compile 'org.json:json:20141113'  
 	
 	compile 'log4j:log4j:1.2.17'
 	
 	testCompile 'junit:junit:4.12'
 	testCompile 'org.easymock:easymock:3.3.1'
+	//runtime fileTree(dir: 'libs', include: '*.jar')
 }
