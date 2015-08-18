@@ -17,6 +17,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 import org.apache.log4j.WriterAppender;
 
+import com.sun.jersey.multipart.FormDataParam;
+
 @Path("/compiler")
 public class ProjectCompiler {
 	
@@ -25,7 +27,7 @@ public class ProjectCompiler {
 	@POST
     @Path("/run")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public String run(InputStream javaProject) {
+	public String run( @FormDataParam("zipFile") InputStream javaProject) {
 		log.setLevel(Level.INFO);
 		SimpleLayout layout = new SimpleLayout();
 		OutputStream logOutputStream = new ByteArrayOutputStream();
