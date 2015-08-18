@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
+import javax.ws.rs.core.Response;
+
 import org.easymock.EasyMockRunner;
 import org.easymock.Mock;
 import org.junit.After;
@@ -37,17 +39,21 @@ public class ProjectCompilerTest {
 	public void testCorruptedZip() throws Exception {
 		InputStream request = new FileInputStream(
 				new File(this.getClass().getResource("./HelloWorld-corrupted.zip").toURI()));
-		String response = new ProjectCompiler().run(request, contentDisposition);
+		Response response = new ProjectCompiler().run(request, contentDisposition);
+		Assert.assertNotNull(response);
+		Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
 		Assert.assertEquals(
 				"INFO - Opening zip file nomeArquivo.zip ...\r\n"+
-				"INFO - Extracting HelloWorld.java\r\n", response);
+				"INFO - Extracting HelloWorld.java\r\n", response.getEntity());
 	}
 	
 	@Test
 	public void testMavenProjectZip() throws Exception {
 		InputStream request = new FileInputStream(
 				new File(this.getClass().getResource("./HelloWorld-maven-project.zip").toURI()));
-		String response = new ProjectCompiler().run(request, contentDisposition);
+		Response response = new ProjectCompiler().run(request, contentDisposition);
+		Assert.assertNotNull(response);
+		Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
 		Assert.assertEquals(
 				"INFO - Opening zip file nomeArquivo.zip ...\r\n" +
 				"INFO - Extracting pom.xml\r\n" +
@@ -61,7 +67,7 @@ public class ProjectCompilerTest {
 				"INFO - Extracting src/test/java/\r\n" +
 				"INFO - Extracting src/test/java/helloworld/\r\n" +
 				"INFO - Extracting src/test/java/helloworld/HelloWorldTest.java\r\n" +
-				"INFO - Extracting src/test/resources/\r\n", response);
+				"INFO - Extracting src/test/resources/\r\n", response.getEntity());
 	}
 
 }

@@ -11,6 +11,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -28,11 +29,9 @@ public class ProjectCompiler {
 	@POST
     @Path("/run")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public String run( @FormDataParam("zipFile") InputStream javaProject,
+	public Response run( @FormDataParam("zipFile") InputStream javaProject,
 			@FormDataParam("zipFile") FormDataContentDisposition contentDisposition) {
-		if(contentDisposition==null) {
-			return "File is required.";
-		}
+
 		log.setLevel(Level.INFO);
 		SimpleLayout layout = new SimpleLayout();
 		OutputStream logOutputStream = new ByteArrayOutputStream();
@@ -57,7 +56,7 @@ public class ProjectCompiler {
 			} catch (IOException ignored) {
 			}
 		}
-		return logOutputStream.toString();
+		return Response.ok(logOutputStream.toString()).build();
 	}
 	
 }
