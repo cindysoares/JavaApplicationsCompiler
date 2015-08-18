@@ -12,14 +12,32 @@ dependencies {
 	compile "com.sun.jersey:jersey-core:1.19"
 	compile "com.sun.jersey:jersey-server:1.19"
 	compile "com.sun.jersey:jersey-bundle:1.19"
+	//compile "com.sun.jersey:jersey-json:1.19"
+	//compile 'com.sun.jersey.contribs:jersey-contribs:1.19'
+	//compile 'org.json:json:20141113'
 	
 	compile 'log4j:log4j:1.2.17'
 	
 	testCompile 'com.sun.jersey:jersey-client:1.19'	
 	testCompile 'com.sun.jersey:jersey-servlet:1.19'
 	testCompile 'junit:junit:4.12'
+	//testCompile 'org.easymock:easymock:3.3.1'
 }
 
 test {
 	exclude '**/IT*'
+}
+
+task integrationTest(type: Test) {
+    include '**/IT**'
+    doFirst {
+        jettyRun.httpPort = 8080    // Port for test
+        jettyRun.daemon = true
+        jettyRun.execute()
+    }
+    doLast {
+        jettyStop.stopPort = 8091   // Port for stop signal
+        jettyStop.stopKey = 'stopKey'
+        jettyStop.execute()
+    }
 }
