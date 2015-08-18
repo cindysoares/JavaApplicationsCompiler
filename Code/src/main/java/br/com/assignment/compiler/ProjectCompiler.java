@@ -38,13 +38,13 @@ public class ProjectCompiler {
 		WriterAppender appender = new WriterAppender(layout, logOutputStream);
 		log.addAppender(appender);
 		
-		log.info("Opening zip file " + contentDisposition.getFileName() + " ...");
+		log.info("Opening zip file " + contentDisposition.getFileName() + " ...<br>");
 		ZipInputStream zipInputStream = null;
 		try {
 			zipInputStream = new ZipInputStream(javaProject);
 			ZipEntry zipEntry;
 			while((zipEntry = zipInputStream.getNextEntry())!= null) {
-				log.info("Extracting " + zipEntry.getName());
+				log.info("Extracting " + zipEntry.getName() + "<br>");
 				byte [] buf = new byte[(int) zipEntry.getSize()];
 	            zipInputStream.read(buf);
 			}
