@@ -14,8 +14,8 @@ public class LoginTest {
 	public void testLoginAsAnExistingUser() {
 		Response result = login.login("admin", "admin");
 		Assert.assertNotNull(result);
-		Assert.assertEquals(Response.Status.OK.getStatusCode(), result.getStatus());
-		Assert.assertEquals("Successful login as admin", result.getEntity());
+		Assert.assertEquals(Response.Status.TEMPORARY_REDIRECT.getStatusCode(), result.getStatus());
+		//Assert.assertEquals("Successful login as admin", result.getEntity());
 	}
 
 	@Test
