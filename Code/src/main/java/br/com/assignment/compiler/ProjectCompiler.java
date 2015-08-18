@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 import org.apache.log4j.WriterAppender;
 
+import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
 
 @Path("/compiler")
@@ -27,14 +28,18 @@ public class ProjectCompiler {
 	@POST
     @Path("/run")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public String run( @FormDataParam("zipFile") InputStream javaProject) {
+	public String run( @FormDataParam("zipFile") InputStream javaProject,
+			@FormDataParam("zipFile") FormDataContentDisposition contentDisposition) {
+		if(contentDisposition==null) {
+			return "File is required.";
+		}
 		log.setLevel(Level.INFO);
 		SimpleLayout layout = new SimpleLayout();
 		OutputStream logOutputStream = new ByteArrayOutputStream();
 		WriterAppender appender = new WriterAppender(layout, logOutputStream);
 		log.addAppender(appender);
 		
-		log.info("Opening zip file ... " );
+		log.info("Opening zip file " + contentDisposition.getFileName() + " ...");
 		ZipInputStream zipInputStream = null;
 		try {
 			zipInputStream = new ZipInputStream(javaProject);

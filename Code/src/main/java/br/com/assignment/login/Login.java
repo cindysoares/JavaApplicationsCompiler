@@ -37,7 +37,7 @@ public class Login {
 			return Response.temporaryRedirect(new URI("../uploadFile.html")).build();
 		} catch (URISyntaxException e) {
 			log.error(e.getMessage(), e);
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e).build();
 		}
 	}
 	
